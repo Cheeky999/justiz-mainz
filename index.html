@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Justizportal Mainz | Rheinland-Pfalz</title>
     <style>
-        /* Grundlegendes Design und Typografie */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -15,23 +14,45 @@
             line-height: 1.6;
         }
 
-        /* Header und Navigation */
         header {
-            background-color: #003366; /* Behörden-Blau */
+            background-color: #003366;
             color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 4px solid #cc0000; /* Roter Akzent (RLP) */
+            padding: 25px 0;
+            border-bottom: 5px solid #cc0000;
         }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-container img {
+            height: 90px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
         header h1 {
             margin: 0;
-            font-size: 28px;
-            font-weight: 400;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
+
         header p {
             margin: 5px 0 0 0;
             font-size: 14px;
             color: #d1e0e0;
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
         nav {
@@ -39,94 +60,135 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
         nav button {
             background: none;
             border: none;
             color: white;
-            padding: 15px 20px;
+            padding: 15px 25px;
             font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        nav button:hover, nav button.active-btn {
-            background-color: #002244;
+            transition: all 0.2s;
         }
 
-        /* Hauptinhalt */
+        nav button:hover, nav button.active-btn {
+            background-color: #002244;
+            color: #ffffff;
+        }
+
         main {
             max-width: 1000px;
             margin: 30px auto;
             background: white;
             padding: 40px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-            border-radius: 4px;
-            min-height: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 2px;
+            min-height: 550px;
         }
 
         h2 {
             color: #003366;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid #003366;
             padding-bottom: 10px;
+            margin-top: 0;
         }
 
-        /* Seiten-Verwaltung (Simulation von Mehrseitigkeit) */
         .page {
             display: none;
-            animation: fadeIn 0.4s;
+            animation: fadeIn 0.4s ease-in-out;
         }
+
         .page.active {
             display: block;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Info-Boxen für Startseite */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
+
         .card {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 4px;
-            border-left: 4px solid #003366;
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            border-left: 5px solid #003366;
+            transition: transform 0.2s;
         }
+
+        .card:hover {
+            transform: scale(1.02);
+            background: #ffffff;
+        }
+
         .card h3 {
             margin-top: 0;
             color: #003366;
+            font-size: 20px;
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #e0e0e0;
-            color: #555;
-            font-size: 14px;
-            margin-top: 40px;
+            padding: 30px;
+            background-color: #222;
+            color: #bbb;
+            font-size: 13px;
+            margin-top: 50px;
         }
 
-        /* Listen */
         ul.custom-list {
-            list-style-type: square;
-            color: #003366;
+            list-style: none;
+            padding: 0;
         }
-        ul.custom-list li span {
-            color: #333;
+
+        ul.custom-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        ul.custom-list li:last-child {
+            border-bottom: none;
+        }
+
+        ul.custom-list li strong {
+            color: #003366;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Justizportal Mainz</h1>
-        <p>Informationen der Gerichte und Staatsanwaltschaften in Mainz</p>
+        <div class="header-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Coat_of_arms_of_Rhineland-Palatinate.svg/1200px-Coat_of_arms_of_Rhineland-Palatinate.svg.png" alt="Landeswappen Rheinland-Pfalz">
+            <div class="header-text">
+                <h1>Justizportal Mainz</h1>
+                <p>Landesregierung Rheinland-Pfalz</p>
+            </div>
+        </div>
     </header>
 
     <nav>
@@ -139,115 +201,65 @@
 
     <main>
         <div id="start" class="page active">
-            <h2>Willkommen auf dem Justizportal der Stadt Mainz</h2>
-            <p>Das Justizportal bietet Ihnen einen zentralen Zugang zu den Informationen und Dienstleistungen des Amtsgerichts, des Landgerichts sowie der Staatsanwaltschaft Mainz. Wir möchten Ihnen rechtliche Vorgänge transparent und verständlich näherbringen.</p>
+            <h2>Willkommen beim Justizzentrum Mainz</h2>
+            <p>Das Justizportal ist die zentrale Anlaufstelle für Bürgerinnen und Bürger im Raum Mainz. Hier finden Sie aktuelle Informationen zur Rechtsprechung, den verschiedenen Fachgerichtsbarkeiten und direkten Zugang zu justiziellen Dienstleistungen.</p>
             
             <div class="grid-container">
                 <div class="card">
                     <h3>Aktuelle Hinweise</h3>
-                    <p>Aufgrund von Baumaßnahmen im Justizzentrum in der Diether-von-Isenburg-Straße kann es aktuell zu leichten Verzögerungen bei der Einlasskontrolle kommen. Bitte planen Sie für Ihre Termine etwas mehr Zeit ein.</p>
+                    <p>Sicherheitskontrollen im Eingangsbereich: Bitte führen Sie keine gefährlichen Gegenstände mit sich. Es kann zu Wartezeiten kommen.</p>
                 </div>
                 <div class="card">
                     <h3>Elektronischer Rechtsverkehr</h3>
-                    <p>Seit dem 1. Januar 2022 ist die Justiz Rheinland-Pfalz flächendeckend an den elektronischen Rechtsverkehr angeschlossen. Bürgerinnen und Bürger können über das eBO (elektronisches Bürger- und Organisationenpostfach) rechtswirksam kommunizieren.</p>
+                    <p>Nutzen Sie die moderne, sichere Kommunikation mit den Gerichten über das besondere elektronische Postfach.</p>
                 </div>
                 <div class="card">
-                    <h3>Opferschutz</h3>
-                    <p>Informationen für Zeugen und Verletzte von Straftaten. Die Zeugenbetreuung des Landgerichts Mainz steht Ihnen für Fragen zum Verfahrensablauf gerne zur Verfügung.</p>
+                    <h3>Stellenangebote</h3>
+                    <p>Werden Sie Teil der Justiz RLP. Wir suchen regelmäßig Fachkräfte für den allgemeinen Justizdienst und die Wachtmeisterei.</p>
                 </div>
             </div>
         </div>
 
         <div id="gerichte" class="page">
-            <h2>Zuständige Gerichte und Behörden in Mainz</h2>
-            <p>Der Justizstandort Mainz umfasst verschiedene Fachgerichtsbarkeiten und Ermittlungsbehörden. Wählen Sie eine Behörde aus, um weitere Details zu erfahren:</p>
+            <h2>Gerichte und Behörden in der Landeshauptstadt</h2>
+            <p>Am Standort Mainz konzentrieren sich wesentliche Institutionen der rheinland-pfälzischen Justiz:</p>
             
             <ul class="custom-list">
-                <li><span><strong>Landgericht Mainz:</strong> Zuständig für Zivil- und Strafsachen in zweiter Instanz sowie erstinstanzlich bei höheren Streitwerten oder schweren Straftaten.</span></li>
-                <li><span><strong>Amtsgericht Mainz:</strong> Zuständig für Zivilstreitigkeiten bis 5.000 Euro, Familienrecht, Nachlassangelegenheiten, Grundbuchamt und Strafsachen der leichten bis mittleren Kriminalität.</span></li>
-                <li><span><strong>Staatsanwaltschaft Mainz:</strong> Die Ermittlungsbehörde für den Landgerichtsbezirk Mainz. Zuständig für die Verfolgung von Straftaten und die Vollstreckung von rechtskräftigen Strafurteilen.</span></li>
-                <li><span><strong>Arbeitsgericht Mainz:</strong> Zuständig für arbeitsrechtliche Streitigkeiten (z. B. Kündigungsschutzklagen).</span></li>
-                <li><span><strong>Verwaltungsgericht Mainz:</strong> Zuständig für öffentlich-rechtliche Streitigkeiten im Rhein-Main-Gebiet von Rheinland-Pfalz.</span></li>
+                <li><strong>Landgericht Mainz</strong>Zuständig für Zivil- und Strafsachen im Bezirk.</li>
+                <li><strong>Amtsgericht Mainz</strong>Zuständig für erstinstanzliche Verfahren, Grundbuch und Nachlass.</li>
+                <li><strong>Staatsanwaltschaft Mainz</strong>Zentrale Strafverfolgungsbehörde.</li>
+                <li><strong>Verwaltungsgericht Mainz</strong>Rechtsschutz gegenüber staatlichem Handeln.</li>
             </ul>
         </div>
 
         <div id="service" class="page">
-            <h2>Service, Formulare und Downloads</h2>
-            <p>Hier finden Sie wichtige Dokumente und Anträge zum Herunterladen. Bitte füllen Sie diese sorgfältig aus und reichen Sie diese postalisch oder über den elektronischen Rechtsverkehr ein.</p>
-            
-            <h3>Häufig genutzte Formulare</h3>
+            <h2>Service & Formulare</h2>
+            <p>Laden Sie hier offizielle Anträge herunter oder informieren Sie sich über Gebühren:</p>
             <ul class="custom-list">
-                <li><span>Antrag auf Prozesskostenhilfe (PKH) / Verfahrenskostenhilfe (VKH)</span></li>
-                <li><span>Antrag auf Erteilung eines Beratungshilfescheins</span></li>
-                <li><span>Fragebogen zur Versorgungsausgleich-Auskunft (Familiensachen)</span></li>
-                <li><span>Vollmacht für zivilrechtliche Vertretungen</span></li>
+                <li>Antrag auf Erteilung eines Erbscheins</li>
+                <li>Prozesskostenhilfe-Formular (PKH)</li>
+                <li>Informationen zur Grundsteuerreform</li>
+                <li>Zahlung von Gerichtskosten per Online-Verfahren</li>
             </ul>
-
-            <h3>Justizauktionen</h3>
-            <p>Ausgesonderte Gegenstände der Justiz und gepfändete Sachwerte werden regelmäßig über die Plattform <a href="#" style="color: #003366;">www.justiz-auktion.de</a> versteigert.</p>
         </div>
 
         <div id="kontakt" class="page">
-            <h2>Kontakt und Anfahrt</h2>
-            <p><strong>Justizzentrum Mainz</strong><br>
+            <h2>Kontakt und Erreichbarkeit</h2>
+            <p><strong>Hausanschrift:</strong><br>
+            Justizzentrum Mainz<br>
             Diether-von-Isenburg-Straße 1<br>
             55116 Mainz</p>
 
-            <h3>Erreichbarkeit</h3>
-            <p><strong>Zentrale Einwahl:</strong> 06131 / 141 - 0<br>
-            <strong>Fax (allgemein):</strong> 06131 / 141 - 4444<br>
+            <p><strong>Telefon:</strong> 06131 / 141 - 0<br>
             <strong>E-Mail:</strong> poststelle@lgmz.jm.rlp.de</p>
 
-            <h3>Öffnungszeiten & Sprechzeiten</h3>
-            <p>Montag bis Freitag: 08:30 Uhr – 12:00 Uhr<br>
-            Donnerstag zusätzlich: 13:30 Uhr – 15:30 Uhr<br>
-            <em>Achtung: Für bestimmte Abteilungen (z.B. Grundbuchamt, Nachlassgericht) können abweichende Sprechzeiten gelten.</em></p>
-
-            <h3>Anfahrt mit dem ÖPNV</h3>
-            <p>Vom Hauptbahnhof Mainz erreichen Sie das Justizzentrum bequem mit den Buslinien 6, 9, 64 und 65 (Haltestelle "Bauhofstraße" oder "Schloss").</p>
+            <p><strong>Sprechzeiten:</strong><br>
+            Mo. - Fr.: 08:30 bis 12:00 Uhr</p>
         </div>
 
         <div id="impressum" class="page">
             <h2>Impressum</h2>
             <p><strong>Herausgeber:</strong><br>
-            Präsidentin des Landgerichts Mainz<br>
-            Diether-von-Isenburg-Straße 1<br>
-            55116 Mainz</p>
-
-            <p><strong>Vertreten durch:</strong><br>
-            Die Präsidentin des Landgerichts (fiktiv für diesen Dummy)</p>
-
-            <p><strong>Verantwortlich für den Inhalt (gemäß § 5 TMG / § 18 MStV):</strong><br>
-            Pressestelle des Landgerichts Mainz</p>
-
-            <p><strong>Haftungsausschluss:</strong><br>
-            Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
-        </div>
-    </main>
-
-    <footer>
-        &copy; 2026 Justizportal Mainz, Rheinland-Pfalz. Dies ist eine simulierte Demonstration.
-    </footer>
-
-    <script>
-        function showPage(pageId, btnElement) {
-            // Alle Seiten ausblenden
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Alle Buttons zurücksetzen
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active-btn');
-            });
-
-            // Geklickte Seite einblenden und Button hervorheben
-            document.getElementById(pageId).classList.add('active');
-            btnElement.classList.add('active-btn');
-        }
-    </script>
-
-</body>
-</html>
+            Der Präsident des Landgerichts Mainz<br>
+            Diether-von-Isenburg-Straße 1, 55116 Mainz</p>
+            <p>Diese Webseite
